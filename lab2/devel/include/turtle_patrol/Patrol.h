@@ -40,7 +40,7 @@ template<>
 struct MD5Sum< ::turtle_patrol::Patrol > {
   static const char* value()
   {
-    return "081833b8303250abb8d3090d1d3e17e7";
+    return "a393432636172d6448ed370108d3fa5e";
   }
 
   static const char* value(const ::turtle_patrol::Patrol&) { return value(); }

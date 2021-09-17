@@ -24,6 +24,9 @@ class PatrolRequest {
       // initObj === null is a special case for deserialization where we don't initialize fields
       this.vel = null;
       this.omega = null;
+      this.x = null;
+      this.y = null;
+      this.theta = null;
     }
     else {
       if (initObj.hasOwnProperty('vel')) {
@@ -38,6 +41,24 @@ class PatrolRequest {
       else {
         this.omega = 0.0;
       }
+      if (initObj.hasOwnProperty('x')) {
+        this.x = initObj.x
+      }
+      else {
+        this.x = 0.0;
+      }
+      if (initObj.hasOwnProperty('y')) {
+        this.y = initObj.y
+      }
+      else {
+        this.y = 0.0;
+      }
+      if (initObj.hasOwnProperty('theta')) {
+        this.theta = initObj.theta
+      }
+      else {
+        this.theta = 0.0;
+      }
     }
   }
 
@@ -47,6 +68,12 @@ class PatrolRequest {
     bufferOffset = _serializer.float32(obj.vel, buffer, bufferOffset);
     // Serialize message field [omega]
     bufferOffset = _serializer.float32(obj.omega, buffer, bufferOffset);
+    // Serialize message field [x]
+    bufferOffset = _serializer.float32(obj.x, buffer, bufferOffset);
+    // Serialize message field [y]
+    bufferOffset = _serializer.float32(obj.y, buffer, bufferOffset);
+    // Serialize message field [theta]
+    bufferOffset = _serializer.float32(obj.theta, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -58,11 +85,17 @@ class PatrolRequest {
     data.vel = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [omega]
     data.omega = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [x]
+    data.x = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [y]
+    data.y = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [theta]
+    data.theta = _deserializer.float32(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 8;
+    return 20;
   }
 
   static datatype() {
@@ -72,7 +105,7 @@ class PatrolRequest {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'eabcf020b6514d3ff27102ac1d24cb0e';
+    return '901dd5e4fb3ebf17f9414f84df1e0f05';
   }
 
   static messageDefinition() {
@@ -81,6 +114,9 @@ class PatrolRequest {
     
     float32 vel
     float32 omega
+    float32 x
+    float32 y
+    float32 theta
     
     `;
   }
@@ -103,6 +139,27 @@ class PatrolRequest {
     }
     else {
       resolved.omega = 0.0
+    }
+
+    if (msg.x !== undefined) {
+      resolved.x = msg.x;
+    }
+    else {
+      resolved.x = 0.0
+    }
+
+    if (msg.y !== undefined) {
+      resolved.y = msg.y;
+    }
+    else {
+      resolved.y = 0.0
+    }
+
+    if (msg.theta !== undefined) {
+      resolved.theta = msg.theta;
+    }
+    else {
+      resolved.theta = 0.0
     }
 
     return resolved;
@@ -203,6 +260,6 @@ class PatrolResponse {
 module.exports = {
   Request: PatrolRequest,
   Response: PatrolResponse,
-  md5sum() { return '081833b8303250abb8d3090d1d3e17e7'; },
+  md5sum() { return 'a393432636172d6448ed370108d3fa5e'; },
   datatype() { return 'turtle_patrol/Patrol'; }
 };

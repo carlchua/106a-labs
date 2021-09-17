@@ -25,11 +25,17 @@ struct PatrolRequest_
 
   PatrolRequest_()
     : vel(0.0)
-    , omega(0.0)  {
+    , omega(0.0)
+    , x(0.0)
+    , y(0.0)
+    , theta(0.0)  {
     }
   PatrolRequest_(const ContainerAllocator& _alloc)
     : vel(0.0)
-    , omega(0.0)  {
+    , omega(0.0)
+    , x(0.0)
+    , y(0.0)
+    , theta(0.0)  {
   (void)_alloc;
     }
 
@@ -40,6 +46,15 @@ struct PatrolRequest_
 
    typedef float _omega_type;
   _omega_type omega;
+
+   typedef float _x_type;
+  _x_type x;
+
+   typedef float _y_type;
+  _y_type y;
+
+   typedef float _theta_type;
+  _theta_type theta;
 
 
 
@@ -119,12 +134,12 @@ struct MD5Sum< ::turtle_patrol::PatrolRequest_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "eabcf020b6514d3ff27102ac1d24cb0e";
+    return "901dd5e4fb3ebf17f9414f84df1e0f05";
   }
 
   static const char* value(const ::turtle_patrol::PatrolRequest_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xeabcf020b6514d3fULL;
-  static const uint64_t static_value2 = 0xf27102ac1d24cb0eULL;
+  static const uint64_t static_value1 = 0x901dd5e4fb3ebf17ULL;
+  static const uint64_t static_value2 = 0xf9414f84df1e0f05ULL;
 };
 
 template<class ContainerAllocator>
@@ -146,6 +161,9 @@ struct Definition< ::turtle_patrol::PatrolRequest_<ContainerAllocator> >
     return "\n\
 float32 vel\n\
 float32 omega\n\
+float32 x\n\
+float32 y\n\
+float32 theta\n\
 ";
   }
 
@@ -166,6 +184,9 @@ namespace serialization
     {
       stream.next(m.vel);
       stream.next(m.omega);
+      stream.next(m.x);
+      stream.next(m.y);
+      stream.next(m.theta);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -188,6 +209,12 @@ struct Printer< ::turtle_patrol::PatrolRequest_<ContainerAllocator> >
     Printer<float>::stream(s, indent + "  ", v.vel);
     s << indent << "omega: ";
     Printer<float>::stream(s, indent + "  ", v.omega);
+    s << indent << "x: ";
+    Printer<float>::stream(s, indent + "  ", v.x);
+    s << indent << "y: ";
+    Printer<float>::stream(s, indent + "  ", v.y);
+    s << indent << "theta: ";
+    Printer<float>::stream(s, indent + "  ", v.theta);
   }
 };
 

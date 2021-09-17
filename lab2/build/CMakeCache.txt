@@ -338,6 +338,12 @@ gtest_force_shared_crt:BOOL=OFF
 //Dependencies for the target
 gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 
+//Value Computed by CMake
+lab2_turtlesim_BINARY_DIR:STATIC=/home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build/lab2_turtlesim
+
+//Value Computed by CMake
+lab2_turtlesim_SOURCE_DIR:STATIC=/home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/src/lab2_turtlesim
+
 //Path to a library.
 lib:FILEPATH=/opt/ros/kinetic/lib/librostime.so
 
@@ -347,11 +353,26 @@ message_generation_DIR:PATH=/opt/ros/kinetic/share/message_generation/cmake
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/kinetic/share/message_runtime/cmake
 
+//Value Computed by CMake
+my_chatter_BINARY_DIR:STATIC=/home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build/my_chatter
+
+//Value Computed by CMake
+my_chatter_SOURCE_DIR:STATIC=/home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/src/my_chatter
+
+//The directory containing a CMake configuration file for rosconsole.
+rosconsole_DIR:PATH=/opt/ros/kinetic/share/rosconsole/cmake
+
+//The directory containing a CMake configuration file for roscpp.
+roscpp_DIR:PATH=/opt/ros/kinetic/share/roscpp/cmake
+
 //The directory containing a CMake configuration file for roscpp_serialization.
 roscpp_serialization_DIR:PATH=/opt/ros/kinetic/share/roscpp_serialization/cmake
 
 //The directory containing a CMake configuration file for roscpp_traits.
 roscpp_traits_DIR:PATH=/opt/ros/kinetic/share/roscpp_traits/cmake
+
+//The directory containing a CMake configuration file for rosgraph_msgs.
+rosgraph_msgs_DIR:PATH=/opt/ros/kinetic/share/rosgraph_msgs/cmake
 
 //The directory containing a CMake configuration file for rospy.
 rospy_DIR:PATH=/opt/ros/kinetic/share/rospy/cmake
@@ -373,6 +394,9 @@ turtle_patrol_SOURCE_DIR:STATIC=/home/cc/ee106a/fl21/class/ee106a-agw/ros_worksp
 
 //The directory containing a CMake configuration file for turtlesim.
 turtlesim_DIR:PATH=/opt/ros/kinetic/share/turtlesim/cmake
+
+//The directory containing a CMake configuration file for xmlrpcpp.
+xmlrpcpp_DIR:PATH=/opt/ros/kinetic/share/xmlrpcpp/cmake
 
 
 ########################
@@ -478,7 +502,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

@@ -56,15 +56,17 @@ CMAKE_BINARY_DIR = /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/bui
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -88,17 +90,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -109,6 +100,16 @@ install/local: preinstall
 install/local/fast: install/local
 
 .PHONY : install/local/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -121,17 +122,16 @@ install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -181,21 +181,6 @@ turtle_patrol_generate_messages_py/fast:
 .PHONY : turtle_patrol_generate_messages_py/fast
 
 # Convenience name for target.
-turtle_patrol/CMakeFiles/turtle_patrol_genpy.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtle_patrol_genpy.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/turtle_patrol_genpy.dir/rule
-
-# Convenience name for target.
-turtle_patrol_genpy: turtle_patrol/CMakeFiles/turtle_patrol_genpy.dir/rule
-
-.PHONY : turtle_patrol_genpy
-
-# fast build rule for target.
-turtle_patrol_genpy/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtle_patrol_genpy.dir/build.make turtle_patrol/CMakeFiles/turtle_patrol_genpy.dir/build
-.PHONY : turtle_patrol_genpy/fast
-
-# Convenience name for target.
 turtle_patrol/CMakeFiles/turtle_patrol_gennodejs.dir/rule:
 	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtle_patrol_gennodejs.dir/rule
 .PHONY : turtle_patrol/CMakeFiles/turtle_patrol_gennodejs.dir/rule
@@ -209,246 +194,6 @@ turtle_patrol_gennodejs: turtle_patrol/CMakeFiles/turtle_patrol_gennodejs.dir/ru
 turtle_patrol_gennodejs/fast:
 	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtle_patrol_gennodejs.dir/build.make turtle_patrol/CMakeFiles/turtle_patrol_gennodejs.dir/build
 .PHONY : turtle_patrol_gennodejs/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/turtle_patrol_genlisp.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtle_patrol_genlisp.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/turtle_patrol_genlisp.dir/rule
-
-# Convenience name for target.
-turtle_patrol_genlisp: turtle_patrol/CMakeFiles/turtle_patrol_genlisp.dir/rule
-
-.PHONY : turtle_patrol_genlisp
-
-# fast build rule for target.
-turtle_patrol_genlisp/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtle_patrol_genlisp.dir/build.make turtle_patrol/CMakeFiles/turtle_patrol_genlisp.dir/build
-.PHONY : turtle_patrol_genlisp/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/_catkin_empty_exported_target.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/_catkin_empty_exported_target.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-# Convenience name for target.
-_catkin_empty_exported_target: turtle_patrol/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-.PHONY : _catkin_empty_exported_target
-
-# fast build rule for target.
-_catkin_empty_exported_target/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/_catkin_empty_exported_target.dir/build.make turtle_patrol/CMakeFiles/_catkin_empty_exported_target.dir/build
-.PHONY : _catkin_empty_exported_target/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/turtlesim_generate_messages_cpp.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtlesim_generate_messages_cpp.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/turtlesim_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-turtlesim_generate_messages_cpp: turtle_patrol/CMakeFiles/turtlesim_generate_messages_cpp.dir/rule
-
-.PHONY : turtlesim_generate_messages_cpp
-
-# fast build rule for target.
-turtlesim_generate_messages_cpp/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtlesim_generate_messages_cpp.dir/build.make turtle_patrol/CMakeFiles/turtlesim_generate_messages_cpp.dir/build
-.PHONY : turtlesim_generate_messages_cpp/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/turtlesim_generate_messages_lisp.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtlesim_generate_messages_lisp.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/turtlesim_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-turtlesim_generate_messages_lisp: turtle_patrol/CMakeFiles/turtlesim_generate_messages_lisp.dir/rule
-
-.PHONY : turtlesim_generate_messages_lisp
-
-# fast build rule for target.
-turtlesim_generate_messages_lisp/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtlesim_generate_messages_lisp.dir/build.make turtle_patrol/CMakeFiles/turtlesim_generate_messages_lisp.dir/build
-.PHONY : turtlesim_generate_messages_lisp/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/turtlesim_generate_messages_nodejs.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtlesim_generate_messages_nodejs.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/turtlesim_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-turtlesim_generate_messages_nodejs: turtle_patrol/CMakeFiles/turtlesim_generate_messages_nodejs.dir/rule
-
-.PHONY : turtlesim_generate_messages_nodejs
-
-# fast build rule for target.
-turtlesim_generate_messages_nodejs/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtlesim_generate_messages_nodejs.dir/build.make turtle_patrol/CMakeFiles/turtlesim_generate_messages_nodejs.dir/build
-.PHONY : turtlesim_generate_messages_nodejs/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_lisp.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_lisp.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-turtle_patrol_generate_messages_lisp: turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_lisp.dir/rule
-
-.PHONY : turtle_patrol_generate_messages_lisp
-
-# fast build rule for target.
-turtle_patrol_generate_messages_lisp/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_lisp.dir/build.make turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_lisp.dir/build
-.PHONY : turtle_patrol_generate_messages_lisp/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/turtlesim_generate_messages_py.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtlesim_generate_messages_py.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/turtlesim_generate_messages_py.dir/rule
-
-# Convenience name for target.
-turtlesim_generate_messages_py: turtle_patrol/CMakeFiles/turtlesim_generate_messages_py.dir/rule
-
-.PHONY : turtlesim_generate_messages_py
-
-# fast build rule for target.
-turtlesim_generate_messages_py/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtlesim_generate_messages_py.dir/build.make turtle_patrol/CMakeFiles/turtlesim_generate_messages_py.dir/build
-.PHONY : turtlesim_generate_messages_py/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/turtlesim_generate_messages_eus.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtlesim_generate_messages_eus.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/turtlesim_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-turtlesim_generate_messages_eus: turtle_patrol/CMakeFiles/turtlesim_generate_messages_eus.dir/rule
-
-.PHONY : turtlesim_generate_messages_eus
-
-# fast build rule for target.
-turtlesim_generate_messages_eus/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtlesim_generate_messages_eus.dir/build.make turtle_patrol/CMakeFiles/turtlesim_generate_messages_eus.dir/build
-.PHONY : turtlesim_generate_messages_eus/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/std_srvs_generate_messages_eus.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_eus: turtle_patrol/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-
-.PHONY : std_srvs_generate_messages_eus
-
-# fast build rule for target.
-std_srvs_generate_messages_eus/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make turtle_patrol/CMakeFiles/std_srvs_generate_messages_eus.dir/build
-.PHONY : std_srvs_generate_messages_eus/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_py: turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_py
-
-# fast build rule for target.
-geometry_msgs_generate_messages_py/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_py.dir/build.make turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_py.dir/build
-.PHONY : geometry_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_nodejs: turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-geometry_msgs_generate_messages_nodejs/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build.make turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/build
-.PHONY : geometry_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_cpp: turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_cpp
-
-# fast build rule for target.
-geometry_msgs_generate_messages_cpp/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build.make turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/build
-.PHONY : geometry_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_eus: turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_eus.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_eus
-
-# fast build rule for target.
-geometry_msgs_generate_messages_eus/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
-.PHONY : geometry_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_cpp.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_cpp.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-turtle_patrol_generate_messages_cpp: turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_cpp.dir/rule
-
-.PHONY : turtle_patrol_generate_messages_cpp
-
-# fast build rule for target.
-turtle_patrol_generate_messages_cpp/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_cpp.dir/build.make turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_cpp.dir/build
-.PHONY : turtle_patrol_generate_messages_cpp/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-geometry_msgs_generate_messages_lisp: turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : geometry_msgs_generate_messages_lisp
-
-# fast build rule for target.
-geometry_msgs_generate_messages_lisp/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build.make turtle_patrol/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/build
-.PHONY : geometry_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-turtle_patrol/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_cpp: turtle_patrol/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
-
-.PHONY : std_srvs_generate_messages_cpp
-
-# fast build rule for target.
-std_srvs_generate_messages_cpp/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make turtle_patrol/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
-.PHONY : std_srvs_generate_messages_cpp/fast
 
 # Convenience name for target.
 turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_eus.dir/rule:
@@ -466,6 +211,21 @@ turtle_patrol_generate_messages_eus/fast:
 .PHONY : turtle_patrol_generate_messages_eus/fast
 
 # Convenience name for target.
+turtle_patrol/CMakeFiles/turtle_patrol_genpy.dir/rule:
+	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtle_patrol_genpy.dir/rule
+.PHONY : turtle_patrol/CMakeFiles/turtle_patrol_genpy.dir/rule
+
+# Convenience name for target.
+turtle_patrol_genpy: turtle_patrol/CMakeFiles/turtle_patrol_genpy.dir/rule
+
+.PHONY : turtle_patrol_genpy
+
+# fast build rule for target.
+turtle_patrol_genpy/fast:
+	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtle_patrol_genpy.dir/build.make turtle_patrol/CMakeFiles/turtle_patrol_genpy.dir/build
+.PHONY : turtle_patrol_genpy/fast
+
+# Convenience name for target.
 turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_nodejs.dir/rule:
 	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_nodejs.dir/rule
 .PHONY : turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_nodejs.dir/rule
@@ -481,34 +241,49 @@ turtle_patrol_generate_messages_nodejs/fast:
 .PHONY : turtle_patrol_generate_messages_nodejs/fast
 
 # Convenience name for target.
-turtle_patrol/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+turtle_patrol/CMakeFiles/turtle_patrol_generate_messages.dir/rule:
+	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtle_patrol_generate_messages.dir/rule
+.PHONY : turtle_patrol/CMakeFiles/turtle_patrol_generate_messages.dir/rule
 
 # Convenience name for target.
-std_srvs_generate_messages_nodejs: turtle_patrol/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+turtle_patrol_generate_messages: turtle_patrol/CMakeFiles/turtle_patrol_generate_messages.dir/rule
 
-.PHONY : std_srvs_generate_messages_nodejs
+.PHONY : turtle_patrol_generate_messages
 
 # fast build rule for target.
-std_srvs_generate_messages_nodejs/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make turtle_patrol/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
-.PHONY : std_srvs_generate_messages_nodejs/fast
+turtle_patrol_generate_messages/fast:
+	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtle_patrol_generate_messages.dir/build.make turtle_patrol/CMakeFiles/turtle_patrol_generate_messages.dir/build
+.PHONY : turtle_patrol_generate_messages/fast
 
 # Convenience name for target.
-turtle_patrol/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+turtle_patrol/CMakeFiles/_catkin_empty_exported_target.dir/rule:
+	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/_catkin_empty_exported_target.dir/rule
+.PHONY : turtle_patrol/CMakeFiles/_catkin_empty_exported_target.dir/rule
 
 # Convenience name for target.
-std_srvs_generate_messages_lisp: turtle_patrol/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
+_catkin_empty_exported_target: turtle_patrol/CMakeFiles/_catkin_empty_exported_target.dir/rule
 
-.PHONY : std_srvs_generate_messages_lisp
+.PHONY : _catkin_empty_exported_target
 
 # fast build rule for target.
-std_srvs_generate_messages_lisp/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make turtle_patrol/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
-.PHONY : std_srvs_generate_messages_lisp/fast
+_catkin_empty_exported_target/fast:
+	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/_catkin_empty_exported_target.dir/build.make turtle_patrol/CMakeFiles/_catkin_empty_exported_target.dir/build
+.PHONY : _catkin_empty_exported_target/fast
+
+# Convenience name for target.
+turtle_patrol/CMakeFiles/turtle_patrol_geneus.dir/rule:
+	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtle_patrol_geneus.dir/rule
+.PHONY : turtle_patrol/CMakeFiles/turtle_patrol_geneus.dir/rule
+
+# Convenience name for target.
+turtle_patrol_geneus: turtle_patrol/CMakeFiles/turtle_patrol_geneus.dir/rule
+
+.PHONY : turtle_patrol_geneus
+
+# fast build rule for target.
+turtle_patrol_geneus/fast:
+	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtle_patrol_geneus.dir/build.make turtle_patrol/CMakeFiles/turtle_patrol_geneus.dir/build
+.PHONY : turtle_patrol_geneus/fast
 
 # Convenience name for target.
 turtle_patrol/CMakeFiles/_turtle_patrol_generate_messages_check_deps_Patrol.dir/rule:
@@ -541,49 +316,49 @@ turtle_patrol_gencpp/fast:
 .PHONY : turtle_patrol_gencpp/fast
 
 # Convenience name for target.
-turtle_patrol/CMakeFiles/std_srvs_generate_messages_py.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/std_srvs_generate_messages_py.dir/rule
+turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_lisp.dir/rule:
+	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_lisp.dir/rule
+.PHONY : turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-std_srvs_generate_messages_py: turtle_patrol/CMakeFiles/std_srvs_generate_messages_py.dir/rule
+turtle_patrol_generate_messages_lisp: turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_lisp.dir/rule
 
-.PHONY : std_srvs_generate_messages_py
+.PHONY : turtle_patrol_generate_messages_lisp
 
 # fast build rule for target.
-std_srvs_generate_messages_py/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/std_srvs_generate_messages_py.dir/build.make turtle_patrol/CMakeFiles/std_srvs_generate_messages_py.dir/build
-.PHONY : std_srvs_generate_messages_py/fast
+turtle_patrol_generate_messages_lisp/fast:
+	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_lisp.dir/build.make turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_lisp.dir/build
+.PHONY : turtle_patrol_generate_messages_lisp/fast
 
 # Convenience name for target.
-turtle_patrol/CMakeFiles/turtle_patrol_geneus.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtle_patrol_geneus.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/turtle_patrol_geneus.dir/rule
+turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_cpp.dir/rule:
+	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_cpp.dir/rule
+.PHONY : turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-turtle_patrol_geneus: turtle_patrol/CMakeFiles/turtle_patrol_geneus.dir/rule
+turtle_patrol_generate_messages_cpp: turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_cpp.dir/rule
 
-.PHONY : turtle_patrol_geneus
+.PHONY : turtle_patrol_generate_messages_cpp
 
 # fast build rule for target.
-turtle_patrol_geneus/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtle_patrol_geneus.dir/build.make turtle_patrol/CMakeFiles/turtle_patrol_geneus.dir/build
-.PHONY : turtle_patrol_geneus/fast
+turtle_patrol_generate_messages_cpp/fast:
+	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_cpp.dir/build.make turtle_patrol/CMakeFiles/turtle_patrol_generate_messages_cpp.dir/build
+.PHONY : turtle_patrol_generate_messages_cpp/fast
 
 # Convenience name for target.
-turtle_patrol/CMakeFiles/turtle_patrol_generate_messages.dir/rule:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtle_patrol_generate_messages.dir/rule
-.PHONY : turtle_patrol/CMakeFiles/turtle_patrol_generate_messages.dir/rule
+turtle_patrol/CMakeFiles/turtle_patrol_genlisp.dir/rule:
+	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f CMakeFiles/Makefile2 turtle_patrol/CMakeFiles/turtle_patrol_genlisp.dir/rule
+.PHONY : turtle_patrol/CMakeFiles/turtle_patrol_genlisp.dir/rule
 
 # Convenience name for target.
-turtle_patrol_generate_messages: turtle_patrol/CMakeFiles/turtle_patrol_generate_messages.dir/rule
+turtle_patrol_genlisp: turtle_patrol/CMakeFiles/turtle_patrol_genlisp.dir/rule
 
-.PHONY : turtle_patrol_generate_messages
+.PHONY : turtle_patrol_genlisp
 
 # fast build rule for target.
-turtle_patrol_generate_messages/fast:
-	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtle_patrol_generate_messages.dir/build.make turtle_patrol/CMakeFiles/turtle_patrol_generate_messages.dir/build
-.PHONY : turtle_patrol_generate_messages/fast
+turtle_patrol_genlisp/fast:
+	cd /home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build && $(MAKE) -f turtle_patrol/CMakeFiles/turtle_patrol_genlisp.dir/build.make turtle_patrol/CMakeFiles/turtle_patrol_genlisp.dir/build
+.PHONY : turtle_patrol_genlisp/fast
 
 # Help Target
 help:
@@ -591,41 +366,26 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... list_install_components"
+	@echo "... install"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... test"
-	@echo "... turtle_patrol_generate_messages_py"
-	@echo "... turtle_patrol_genpy"
-	@echo "... turtle_patrol_gennodejs"
-	@echo "... turtle_patrol_genlisp"
 	@echo "... install/local"
-	@echo "... _catkin_empty_exported_target"
-	@echo "... turtlesim_generate_messages_cpp"
-	@echo "... turtlesim_generate_messages_lisp"
+	@echo "... turtle_patrol_generate_messages_py"
+	@echo "... turtle_patrol_gennodejs"
+	@echo "... list_install_components"
 	@echo "... install/strip"
-	@echo "... turtlesim_generate_messages_nodejs"
-	@echo "... turtle_patrol_generate_messages_lisp"
-	@echo "... turtlesim_generate_messages_py"
-	@echo "... turtlesim_generate_messages_eus"
-	@echo "... std_srvs_generate_messages_eus"
-	@echo "... geometry_msgs_generate_messages_py"
-	@echo "... geometry_msgs_generate_messages_nodejs"
-	@echo "... geometry_msgs_generate_messages_cpp"
-	@echo "... geometry_msgs_generate_messages_eus"
-	@echo "... turtle_patrol_generate_messages_cpp"
-	@echo "... geometry_msgs_generate_messages_lisp"
-	@echo "... std_srvs_generate_messages_cpp"
 	@echo "... turtle_patrol_generate_messages_eus"
+	@echo "... turtle_patrol_genpy"
 	@echo "... turtle_patrol_generate_messages_nodejs"
-	@echo "... std_srvs_generate_messages_nodejs"
-	@echo "... std_srvs_generate_messages_lisp"
-	@echo "... _turtle_patrol_generate_messages_check_deps_Patrol"
-	@echo "... install"
-	@echo "... turtle_patrol_gencpp"
-	@echo "... std_srvs_generate_messages_py"
-	@echo "... turtle_patrol_geneus"
 	@echo "... turtle_patrol_generate_messages"
+	@echo "... _catkin_empty_exported_target"
+	@echo "... test"
+	@echo "... turtle_patrol_geneus"
+	@echo "... _turtle_patrol_generate_messages_check_deps_Patrol"
+	@echo "... turtle_patrol_gencpp"
+	@echo "... turtle_patrol_generate_messages_lisp"
+	@echo "... turtle_patrol_generate_messages_cpp"
+	@echo "... turtle_patrol_genlisp"
 .PHONY : help
 
 

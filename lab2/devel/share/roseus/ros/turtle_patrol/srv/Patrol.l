@@ -22,17 +22,23 @@
 
 (defclass turtle_patrol::PatrolRequest
   :super ros::object
-  :slots (_vel _omega ))
+  :slots (_vel _omega _x _y _theta ))
 
 (defmethod turtle_patrol::PatrolRequest
   (:init
    (&key
     ((:vel __vel) 0.0)
     ((:omega __omega) 0.0)
+    ((:x __x) 0.0)
+    ((:y __y) 0.0)
+    ((:theta __theta) 0.0)
     )
    (send-super :init)
    (setq _vel (float __vel))
    (setq _omega (float __omega))
+   (setq _x (float __x))
+   (setq _y (float __y))
+   (setq _theta (float __theta))
    self)
   (:vel
    (&optional __vel)
@@ -40,12 +46,27 @@
   (:omega
    (&optional __omega)
    (if __omega (setq _omega __omega)) _omega)
+  (:x
+   (&optional __x)
+   (if __x (setq _x __x)) _x)
+  (:y
+   (&optional __y)
+   (if __y (setq _y __y)) _y)
+  (:theta
+   (&optional __theta)
+   (if __theta (setq _theta __theta)) _theta)
   (:serialization-length
    ()
    (+
     ;; float32 _vel
     4
     ;; float32 _omega
+    4
+    ;; float32 _x
+    4
+    ;; float32 _y
+    4
+    ;; float32 _theta
     4
     ))
   (:serialize
@@ -56,6 +77,12 @@
        (sys::poke _vel (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;; float32 _omega
        (sys::poke _omega (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; float32 _x
+       (sys::poke _x (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; float32 _y
+       (sys::poke _y (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
+     ;; float32 _theta
+       (sys::poke _theta (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -64,6 +91,12 @@
      (setq _vel (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;; float32 _omega
      (setq _omega (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; float32 _x
+     (setq _x (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; float32 _y
+     (setq _y (sys::peek buf ptr- :float)) (incf ptr- 4)
+   ;; float32 _theta
+     (setq _theta (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;;
    self)
   )
@@ -113,7 +146,7 @@
   :super ros::object
   :slots ())
 
-(setf (get turtle_patrol::Patrol :md5sum-) "081833b8303250abb8d3090d1d3e17e7")
+(setf (get turtle_patrol::Patrol :md5sum-) "a393432636172d6448ed370108d3fa5e")
 (setf (get turtle_patrol::Patrol :datatype-) "turtle_patrol/Patrol")
 (setf (get turtle_patrol::Patrol :request) turtle_patrol::PatrolRequest)
 (setf (get turtle_patrol::Patrol :response) turtle_patrol::PatrolResponse)
@@ -121,12 +154,15 @@
 (defmethod turtle_patrol::PatrolRequest
   (:response () (instance turtle_patrol::PatrolResponse :init)))
 
-(setf (get turtle_patrol::PatrolRequest :md5sum-) "081833b8303250abb8d3090d1d3e17e7")
+(setf (get turtle_patrol::PatrolRequest :md5sum-) "a393432636172d6448ed370108d3fa5e")
 (setf (get turtle_patrol::PatrolRequest :datatype-) "turtle_patrol/PatrolRequest")
 (setf (get turtle_patrol::PatrolRequest :definition-)
       "
 float32 vel
 float32 omega
+float32 x
+float32 y
+float32 theta
 ---
 
 geometry_msgs/Twist cmd
@@ -151,12 +187,15 @@ float64 x
 float64 y
 ")
 
-(setf (get turtle_patrol::PatrolResponse :md5sum-) "081833b8303250abb8d3090d1d3e17e7")
+(setf (get turtle_patrol::PatrolResponse :md5sum-) "a393432636172d6448ed370108d3fa5e")
 (setf (get turtle_patrol::PatrolResponse :datatype-) "turtle_patrol/PatrolResponse")
 (setf (get turtle_patrol::PatrolResponse :definition-)
       "
 float32 vel
 float32 omega
+float32 x
+float32 y
+float32 theta
 ---
 
 geometry_msgs/Twist cmd
@@ -183,6 +222,6 @@ float64 y
 
 
 
-(provide :turtle_patrol/Patrol "081833b8303250abb8d3090d1d3e17e7")
+(provide :turtle_patrol/Patrol "a393432636172d6448ed370108d3fa5e")
 
 

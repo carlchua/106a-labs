@@ -6,4 +6,6 @@
 # testing this directory and lists subdirectories to be tested as well.
 subdirs(gtest)
 subdirs(chatter)
+subdirs(my_chatter)
+subdirs(lab2_turtlesim)
 subdirs(turtle_patrol)

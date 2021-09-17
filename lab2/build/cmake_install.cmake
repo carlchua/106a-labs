@@ -127,6 +127,8 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build/gtest/cmake_install.cmake")
   include("/home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build/chatter/cmake_install.cmake")
+  include("/home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build/my_chatter/cmake_install.cmake")
+  include("/home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build/lab2_turtlesim/cmake_install.cmake")
   include("/home/cc/ee106a/fl21/class/ee106a-agw/ros_workspaces/lab2/build/turtle_patrol/cmake_install.cmake")
 
 endif()

@@ -3,6 +3,12 @@
           VEL
           OMEGA-VAL
           OMEGA
+          X-VAL
+          X
+          Y-VAL
+          Y
+          THETA-VAL
+          THETA
           CMD-VAL
           CMD
 ))
