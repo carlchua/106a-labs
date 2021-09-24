@@ -10,7 +10,7 @@ import rospy
 import tf2_ros
 import sys
 
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Twist, Vector3
 
 #Define the method which contains the main functionality of the node.
 def controller(turtlebot_frame, goal_frame):
@@ -45,26 +45,15 @@ def controller(turtlebot_frame, goal_frame):
       # Process trans to get your state error
       # Generate a control command to send to the robot
 
-      # turtle_bot_data = turtlebot_frame.transforms.transform
-      # goal_data = goal_frame.transforms.transform
-
-      # tb_x = turtle_bot_data.translation.x
-      # tb_y = turtle_bot_data.translation.y
-      # tb_z = turtle_bot_data.translation.z
-
-      # goal_x = goal_data.translation.x
-      # goal_y = goal.data.translation.y
-      # goal_z = goal.data.translation.z
-
-      error_x = trans[0]
-      error_y = trans[1]
+      error_x = trans.transform.translation.x
+      error_y = trans.transform.translation.y
 
       control_command = Twist()
-      linear_command = Vector3d()
-      angular_command = Vector3d()
+      linear_command = Vector3()
+      angular_command = Vector3()
 
       linear_command.x = K1 * (error_x)
-      angular_command.x = K2 * (error_y)
+      angular_command.z = K2 * (error_y)
 
       print('lin', linear_command.x)
       print('ang', angular_command.x)
