@@ -6,7 +6,6 @@ import kin_func_skeleton as kfs
 from sensor_msgs.msg import JointState
 from baxter_forward_kinematics import *
 import rospy
-import tf2
 
 
 # Define the callback method which is called whenever this node receives a 

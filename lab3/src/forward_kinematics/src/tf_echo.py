@@ -1,8 +1,11 @@
+#!/usr/bin/env python
+
 import tf2_ros
 import rospy
-
+import sys
 
 def main(target_frame, source_frame):
+	rospy.init_node("listener_node")
 	tfBuffer = tf2_ros.Buffer()
 	tfListener = tf2_ros.TransformListener(tfBuffer)
 
